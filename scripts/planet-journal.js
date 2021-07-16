@@ -331,7 +331,7 @@ function makePlanet(arr, id) {
   const name = arr[0] == 6 ? planetName[arr[2]] + `-X` : planetName[arr[2]];
   const tierInfo =
     arr[0] == 6
-      ? tier[arr[0]].results[arr[1]] + `<br/>` + `<br/>` + tier[rollDice(5)].results[rollDice(5)]
+      ? tier[arr[0]].results[arr[1]] + `<br/>` + `<br/>` + tier[rollDice(5)].results[rollDice(12)]
       : tier[arr[0]].results[arr[1]];
 
   planetObj.suffix = suffix(arr[3]);
