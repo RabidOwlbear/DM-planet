@@ -14,7 +14,7 @@
         "entity": "Macro",
         "module": "DM-planet"
     }],
-    "url": "https://gitlab.com/RabidOwlbear/DM-planet",
+    "url": "https://github.com/RabidOwlbear/DM-planet",
   "manifest": "https://github.com/RabidOwlbear/DM-planet/raw/master/module.json",
   "download": "https://github.com/RabidOwlbear/DM-planet/archive/refs/heads/master.zip"
 
