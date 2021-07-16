@@ -3,13 +3,13 @@
     "title": "Dark matter planet journal creator",
     "description": "Dark matter planet journal creator",
     "author": "grim",
-    "version": "0.0.0.05",
+    "version": "0.0.0.06",
     "minimumCoreVersion": "0.8.6",
     "compatibleCoreVersion": "0.8.6",
-    "scripts": ["/scripts/planet-journal.js"],
+    "scripts": ["/scripts/DM-planet-journal.js", "/scripts/DM-planet-tables.js"],
     "packs": [{
         "name": "macro",
-        "label": "Macros",
+        "label": "DM Planet Gen Macro",
         "path": "./packs/macro.db",
         "entity": "Macro",
         "module": "DM-planet"
