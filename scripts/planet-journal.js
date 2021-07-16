@@ -259,10 +259,8 @@ function rollDice(num) {
 }
 
 function rollsArr(arr = rollPool) {
-  console.log('rollArr', arr);
   let retArr = [];
   for (let str of arr) {
-    console.log('rollArr out', str);
     retArr.push(rollDice(str));
   }
   return retArr;
@@ -326,7 +324,6 @@ function suffix(num) {
 }
 
 function makePlanet(arr, id) {
-  console.log('arr', arr);
   const planetObj = {};
   const name = arr[0] == 6 ? planetName[arr[2]] + `-X` : planetName[arr[2]];
   const tierInfo =
@@ -340,7 +337,6 @@ function makePlanet(arr, id) {
   planetObj.tierInfo = tierInfo;
   planetObj.civQuirk = civQuirk[arr[4]];
   planetObj.natQuirk = natQuirk[arr[5]];
-  console.log(planetObj);
   if (id) {
     planetObj.folder = id;
   }
@@ -363,7 +359,6 @@ async function planetJournal(obj) {
   <p>${obj.natQuirk}</p>
   </div>
   `;
-  console.log(content);
   await JournalEntry.create({
     content : content,
     folder  : obj.folder,
