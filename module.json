@@ -16,6 +16,6 @@
     }],
     "url": "https://gitlab.com/RabidOwlbear/DM-planet",
   "manifest": "https://github.com/RabidOwlbear/DM-planet/raw/master/module.json",
-  "download": "https://gitlab.com/RabidOwlbear/DM-planet/-/archive/master/DM-planet.zip"
+  "download": "https://github.com/RabidOwlbear/DM-planet/archive/refs/heads/master.zip"
 
 }
