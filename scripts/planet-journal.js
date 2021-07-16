@@ -108,13 +108,10 @@ const tier = {
     results : {
       1  : 'This planet is an elven resort world. Its true inhabitants number only a few thousand, but tourists flock to this place at certain times of the year, swelling its population to millions.',
       2  : 'This planet is an elven resort world. Its true inhabitants number only a few thousand, but tourists flock to this place at certain times of the year, swelling its population to millions.',
-
       3  : 'Megacities of impressive skyscrapers line this planet’s coasts, while the rest of its land is carefully districted into farms, which are worked by automatons to feed the populace.',
       4  : 'Megacities of impressive skyscrapers line this planet’s coasts, while the rest of its land is carefully districted into farms, which are worked by automatons to feed the populace.',
-
       5  : 'This planet is very similar to a younger High Terra or Earth, down to its inhabitants and their culture. However, it appears history took a different course here or that it has simply developed more slowly, granting a glimpse into an alternate future or a world of yesteryear. ',
       6  : 'This planet is very similar to a younger High Terra or Earth, down to its inhabitants and their culture. However, it appears history took a different course here or that it has simply developed more slowly, granting a glimpse into an alternate future or a world of yesteryear. ',
-
       7  : 'This planet already has millions of humanoid inhabitants, a young race which has already spread to the far corners of the globe, but only just mastered the finer points of making bronze tools.',
       8  : 'This planet already has millions of humanoid inhabitants, a young race which has already spread to the far corners of the globe, but only just mastered the finer points of making bronze tools.',
       9  : 'This world is large, wet, and fertile, creating excellent conditions for life, and indeed, it is home to many different plants and animals. It can comfortably support tens of millions of humanoids with only a modest amount of agricultural development.',
@@ -215,7 +212,8 @@ const civQuirk = {
   2  : 'The people of this planet are famous through the sector thanks to their incredibly catchy pop music. ',
   3  : 'Parts of this planet are inhospitable due to centuries of uncompromising warfare. ',
   4  : 'The people of this planet have domesticated a wide range of monsters. ',
-  5  : 'This planet is a hive of scum and villainy. 6 This planet is ruled by a wizarding bureaucracy whose rules are as arcane as its magics. ',
+  5  : 'This planet is a hive of scum and villainy.',
+  6  : 'This planet is ruled by a wizarding bureaucracy whose rules are as arcane as its magics. ',
   7  : 'An ancient, eternal dragon considers this entire planet to be part of its hoard. ',
   8  : 'Major warring factions on this planet recently made peace with each other. ',
   9  : 'This planet has been quarantined by scientists from a neighboring star system. ',
