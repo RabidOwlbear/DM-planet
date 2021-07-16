@@ -14,8 +14,8 @@
         "entity": "Macro",
         "module": "DM-planet"
     }],
-    "url": "https://gitlab.com/dark-matter1/dark-matter-compendium",
-  "manifest": "https://gitlab.com/dark-matter1/dark-matter-compendium/raw/master/module.json",
-  "download": "https://gitlab.com/dark-matter1/dark-matter-compendium/-/archive/master/dark-matter-compendium-master.zip"
+    "url": "https://gitlab.com/RabidOwlbear/DM-planet",
+  "manifest": "https://gitlab.com/RabidOwlbear/DM-planet/raw/master/module.json",
+  "download": "https://gitlab.com/RabidOwlbear/DM-planet/-/archive/master/DM-planet.zip"
 
 }
