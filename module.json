@@ -3,7 +3,7 @@
     "title": "Dark matter planet journal creator",
     "description": "Dark matter planet journal creator",
     "author": "grim",
-    "version": "0.0.0.01",
+    "version": "0.0.0.02",
     "minimumCoreVersion": "0.8.6",
     "compatibleCoreVersion": "0.8.6",
     "scripts": ["/scripts/planet-journal.js"],
@@ -15,7 +15,7 @@
         "module": "DM-planet"
     }],
     "url": "https://github.com/RabidOwlbear/DM-planet",
-  "manifest": "https://github.com/RabidOwlbear/DM-planet/raw/master/module.json",
-  "download": "https://github.com/RabidOwlbear/DM-planet/archive/refs/heads/master.zip"
+    "manifest": "https://github.com/RabidOwlbear/DM-planet/raw/master/module.json",
+    "download": "https://github.com/RabidOwlbear/DM-planet/archive/refs/heads/master.zip"
 
 }

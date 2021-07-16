@@ -1,4 +1,4 @@
-let config = [ 6, 12, 100, 100, 20, 20 ];
+let rollPool = [ 6, 12, 100, 100, 20, 20 ];
 const planetName = {
   1   : 'Accretia',
   2   : 'Aestoria',
@@ -101,36 +101,7 @@ const planetName = {
   99  : 'Zetatau',
   100 : 'Zolda'
 };
-const nameModA = 'Prime';
-const nameModB = { 1: 'I', 6: 'VI', 2: 'II', 7: 'VII', 3: 'III', 8: 'VIII', 4: 'IV', 9: 'IX', 5: 'V', 10: 'X' };
-const nameModC = {
-  1  : 'A',
-  2  : 'B',
-  3  : 'C',
-  4  : 'D',
-  5  : 'E',
-  6  : 'F',
-  7  : 'G',
-  8  : 'H',
-  9  : 'I',
-  10 : 'J',
-  11 : 'K',
-  12 : 'L',
-  13 : 'M',
-  14 : 'N',
-  15 : 'O',
-  16 : 'P',
-  17 : 'Q',
-  18 : 'R',
-  19 : 'S',
-  20 : 'T',
-  21 : 'U',
-  22 : 'V',
-  23 : 'W',
-  24 : 'X',
-  25 : 'Y',
-  26 : 'Z'
-};
+
 const tier = {
   1 : {
     name    : 'tier1',
@@ -287,16 +258,48 @@ function rollDice(num) {
   return Math.floor(Math.random() * num + 1);
 }
 
-function rollsArr(arr) {
+function rollsArr(arr = rollPool) {
+  console.log('rollArr', arr);
   let retArr = [];
   for (let str of arr) {
-    console.log(str);
+    console.log('rollArr out', str);
     retArr.push(rollDice(str));
   }
   return retArr;
 }
 
 function suffix(num) {
+  const nameModA = 'Prime';
+  const nameModB = { 1: 'I', 6: 'VI', 2: 'II', 7: 'VII', 3: 'III', 8: 'VIII', 4: 'IV', 9: 'IX', 5: 'V', 10: 'X' };
+  const nameModC = {
+    1  : 'A',
+    2  : 'B',
+    3  : 'C',
+    4  : 'D',
+    5  : 'E',
+    6  : 'F',
+    7  : 'G',
+    8  : 'H',
+    9  : 'I',
+    10 : 'J',
+    11 : 'K',
+    12 : 'L',
+    13 : 'M',
+    14 : 'N',
+    15 : 'O',
+    16 : 'P',
+    17 : 'Q',
+    18 : 'R',
+    19 : 'S',
+    20 : 'T',
+    21 : 'U',
+    22 : 'V',
+    23 : 'W',
+    24 : 'X',
+    25 : 'Y',
+    26 : 'Z'
+  };
+
   let retStr = '';
   if (num > 50) {
     let rollArr = rollsArr([ 10, 10, 26, 3 ]);
@@ -325,19 +328,16 @@ function suffix(num) {
 function makePlanet(arr, id) {
   console.log('arr', arr);
   const planetObj = {};
-  if (arr[3] > 50) {
-    planetObj.suffix = suffix();
-  }
-  else if (arr[3] > 20) {
-    planetObj.suffix = nameModB[rollDice(10)];
-  }
-  else {
-    planetObj.suffix = 'Prime';
-  }
+  const name = arr[0] == 6 ? planetName[arr[2]] + `-X` : planetName[arr[2]];
+  const tierInfo =
+    arr[0] == 6
+      ? tier[arr[0]].results[arr[1]] + `<br/>` + `<br/>` + tier[rollDice(5)].results[rollDice(5)]
+      : tier[arr[0]].results[arr[1]];
+
   planetObj.suffix = suffix(arr[3]);
-  planetObj.name = planetName[arr[2]];
+  planetObj.name = name;
   planetObj.tier = arr[0];
-  planetObj.tierInfo = tier[arr[0]].results[arr[1]];
+  planetObj.tierInfo = tierInfo;
   planetObj.civQuirk = civQuirk[arr[4]];
   planetObj.natQuirk = natQuirk[arr[5]];
   console.log(planetObj);
@@ -350,7 +350,7 @@ function makePlanet(arr, id) {
 async function planetJournal(obj) {
   let name = obj.name + ' ' + obj.suffix;
   let content = `
-  <h1>Planet ${name} - Tier ${obj.tier}</h1>
+  <h1>${name} - Tier ${obj.tier}</h1>
   <div>
   <p>${obj.tierInfo}</p>
   </div>
