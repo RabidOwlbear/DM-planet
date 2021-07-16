@@ -1,4 +1,7 @@
+//sloppy pile of rolls
+//[d6 = tier roll, d12 = tier result roll, d100 = name roll, d100 = name modifier roll, d20 = civ quirk roll, d20 = nat quirk roll]
 let rollPool = [ 6, 12, 100, 100, 20, 20 ];
+//name table
 const planetName = {
   1   : 'Accretia',
   2   : 'Aestoria',
@@ -101,7 +104,7 @@ const planetName = {
   99  : 'Zetatau',
   100 : 'Zolda'
 };
-
+//tier table
 const tier = {
   1 : {
     name    : 'tier1',
@@ -206,7 +209,7 @@ const tier = {
     }
   }
 };
-
+//civilization quirk
 const civQuirk = {
   1  : 'The inhabitants of this planet have built rapid transit systems all over its surface. ',
   2  : 'The people of this planet are famous through the sector thanks to their incredibly catchy pop music. ',
@@ -229,6 +232,7 @@ const civQuirk = {
   19 : 'This planet’s sole leader is selected through an annual lottery, stripped of all property, and forced to live on alms, but is otherwise all-powerful.',
   20 : 'Levity of any sort is outlawed here. Laughter is punishable through public lashings, and dancing is punishable by death.'
 };
+//natural quirk
 const natQuirk = {
   1  : 'This planet is subject to an unusually high rate of meteorite strikes. ',
   2  : 'All the native lifeforms on this planet are constructs. ',
@@ -251,11 +255,11 @@ const natQuirk = {
   19 : 'This planet’s breeze sounds eerily like someone whispering just out of earshot. ',
   20 : 'Flowers on this planet flee when approached.'
 };
-
+//dice roll function
 function rollDice(num) {
   return Math.floor(Math.random() * num + 1);
 }
-
+//quick roll all dice
 function rollsArr(arr = rollPool) {
   let retArr = [];
   for (let str of arr) {
@@ -263,8 +267,9 @@ function rollsArr(arr = rollPool) {
   }
   return retArr;
 }
-
+//create name modification
 function suffix(num) {
+  //mod options
   const nameModA = 'Prime';
   const nameModB = { 1: 'I', 6: 'VI', 2: 'II', 7: 'VII', 3: 'III', 8: 'VIII', 4: 'IV', 9: 'IX', 5: 'V', 10: 'X' };
   const nameModC = {
@@ -301,6 +306,7 @@ function suffix(num) {
     let rollArr = rollsArr([ 10, 10, 26, 3 ]);
     let letterPlace = rollsArr[3];
     let letter = nameModC[rollArr[2]];
+    //arrange suffix characters
     if (letterPlace == 3) {
       retStr = `${rollArr[0] - 1}` + `${rollArr[1] - 1}` + `${letter}`;
     }
@@ -320,7 +326,7 @@ function suffix(num) {
 
   return retStr;
 }
-
+//create object containing planet roll results data
 function makePlanet(arr, id) {
   const planetObj = {};
   const name = arr[0] == 6 ? planetName[arr[2]] + `-X` : planetName[arr[2]];
@@ -340,7 +346,7 @@ function makePlanet(arr, id) {
   }
   return planetObj;
 }
-
+//build journal entry contents, create journal entry
 async function planetJournal(obj) {
   let name = obj.name + ' ' + obj.suffix;
   let content = `
