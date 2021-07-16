@@ -1,6 +1,6 @@
 //sloppy pile of rolls
-//[d6 = tier roll, d12 = tier result roll, d100 = name roll, d100 = name modifier roll, d20 = civ quirk roll, d20 = nat quirk roll]
-let rollPool = [ 6, 12, 100, 100, 20, 20 ];
+//[d6 = tier roll, d12 = tier result roll, d100 = name roll, d100 = name modifier roll, d20 = civ quirk roll, d20 = nat quirk roll, d12= planet trait]
+let rollPool = [ 6, 12, 100, 100, 20, 20, 12 ];
 //name table
 const planetName = {
   1   : 'Accretia',
@@ -255,6 +255,21 @@ const natQuirk = {
   19 : 'This planet’s breeze sounds eerily like someone whispering just out of earshot. ',
   20 : 'Flowers on this planet flee when approached.'
 };
+//planet trait
+const planetTrait = {
+  1  : 'The star is nearing the end of its life, burning the last of its remaining hydrogen and compressing into a white dwarf. Its nearest planets are still warm, and will remain so for many millennia.',
+  2  : 'This staggering colossus of a star burns brightly and will not likely burn for long. Within perhaps ten million years, it will collapse into a supernova, consuming all its planets and burning dozens of other nearby systems to nothingness.',
+  3  : 'The two stars at the center of this system form a binary pair. They are locked in a dance of increasing rotational speed that sees one of the two being devoured by the other through constant stellar accretion. 4 Nestled within a nebula of astonishing size, this star is a newborn, casting its first rays and drawing in as much gas as it can from the surrounding cloud. Its planets are newly formed as well, and predictably hostile.',
+  5  : 'This star is young and yellow, a mainline star that will nourish its planets for billions of years to come. However, it has a worrisome and mysterious dark spot that combs across its surface.',
+  6  : 'This star is extremely active, spewing unusually deadly radiation and producing multiple solar flares at once.',
+  7  : 'A blinding line of radiation ejects from either pole of this pulsar.',
+  8  : 'This neutron star is dead, but still clings to much of its heat. Its innermost planets may still be warmed by it for a few million years, but soon they too will freeze.',
+  9  : "An abandoned dyson ring from an ancient and forgotten civilization still wraps this star's circumference. Strange magic or technology must affix it in place.",
+  10 : 'This star, usually blue, periodically shifts to a yellow color and produces strange radio frequencies.',
+  11 : 'This star is swelling to its penultimate size, consuming its nearest planets as it grows until it eventually collapses in a dramatic supernova. Such a process takes millennia; now is just the slow expansion.',
+  12 : 'This star is a newborn, only recently exploded into existence among a cloud of interstellar gas, which it now hungrily and steadily devours'
+};
+
 //dice roll function
 function rollDice(num) {
   return Math.floor(Math.random() * num + 1);
@@ -304,7 +319,7 @@ function suffix(num) {
   let retStr = '';
   if (num > 50) {
     let rollArr = rollsArr([ 10, 10, 26, 3 ]);
-    let letterPlace = rollsArr[3];
+    let letterPlace = rollArr[3];
     let letter = nameModC[rollArr[2]];
     //arrange suffix characters
     if (letterPlace == 3) {
@@ -341,6 +356,7 @@ function makePlanet(arr, id) {
   planetObj.tierInfo = tierInfo;
   planetObj.civQuirk = civQuirk[arr[4]];
   planetObj.natQuirk = natQuirk[arr[5]];
+  planetObj.planetTrait = planetTrait[arr[6]];
   if (id) {
     planetObj.folder = id;
   }
@@ -361,6 +377,9 @@ async function planetJournal(obj) {
   <br/>
   <h2>Natuarl Quirk:</h2>
   <p>${obj.natQuirk}</p>
+  <br/>
+  <h2>Planet Trait:</h2>
+  <p>${obj.planetTrait}</p>
   </div>
   `;
   await JournalEntry.create({
