@@ -296,20 +296,29 @@ function rollsArr(arr) {
   return retArr;
 }
 
-function suffix() {
+function suffix(num) {
   let retStr = '';
-  let rollArr = rollsArr([ 10, 10, 26, 3 ]);
-  let letterPlace = rollsArr[3];
-  let letter = nameModC[rollArr[2]];
-  if (letterPlace == 3) {
-    retStr = `${rollArr[0] - 1}` + `${rollArr[1] - 1}` + `${letter}`;
+  if (num > 50) {
+    let rollArr = rollsArr([ 10, 10, 26, 3 ]);
+    let letterPlace = rollsArr[3];
+    let letter = nameModC[rollArr[2]];
+    if (letterPlace == 3) {
+      retStr = `${rollArr[0] - 1}` + `${rollArr[1] - 1}` + `${letter}`;
+    }
+    else if (letterPlace == 2) {
+      retStr = `${rollArr[0] - 1}` + `${letter}` + `${rollArr[1] - 1}`;
+    }
+    else {
+      retStr = `${letter}` + `${rollArr[0] - 1}` + `${rollArr[1] - 1}`;
+    }
   }
-  else if (letterPlace == 2) {
-    retStr = `${rollArr[0] - 1}` + `${letter}` + `${rollArr[1] - 1}`;
+  else if (num > 20) {
+    retStr = nameModB[rollDice(10)];
   }
   else {
-    retStr = `${letter}` + `${rollArr[0] - 1}` + `${rollArr[1] - 1}`;
+    retStr = nameModA;
   }
+
   return retStr;
 }
 
@@ -325,7 +334,7 @@ function makePlanet(arr, id) {
   else {
     planetObj.suffix = 'Prime';
   }
-  planetObj.suffix = suffix();
+  planetObj.suffix = suffix(arr[3]);
   planetObj.name = planetName[arr[2]];
   planetObj.tier = arr[0];
   planetObj.tierInfo = tier[arr[0]].results[arr[1]];
