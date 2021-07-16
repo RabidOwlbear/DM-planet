@@ -3,7 +3,7 @@
     "title": "Dark matter planet journal creator",
     "description": "Dark matter planet journal creator",
     "author": "grim",
-    "version": "0.0.0.03",
+    "version": "0.0.0.04",
     "minimumCoreVersion": "0.8.6",
     "compatibleCoreVersion": "0.8.6",
     "scripts": ["/scripts/planet-journal.js"],
