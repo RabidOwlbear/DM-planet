@@ -1,24 +1,24 @@
 //[d6 = tier roll, d12 = tier result roll, d100 = name roll, d100 = name modifier roll, d20 = civ quirk roll, d20 = nat quirk roll, d12= planet trait]
 async function generatePlanet(id) {
   const rollPool = {
-    tier       : 6,
-    tierResult : 12,
-    name       : 100,
-    quirk      : 20,
-    trait      : 12,
+    tier: 6,
+    tierResult: 12,
+    name: 100,
+    quirk: 20,
+    trait: 12,
     //quick roll all dice
     get tableRolls() {
       return {
-        id         : id,
-        tier       : rollDice(this.tier),
-        tierResult : rollDice(this.tierResult),
-        name       : rollDice(this.name),
-        nameMod    : rollDice(this.name),
-        quirkA     : rollDice(this.quirk),
-        quirkB     : rollDice(this.quirk),
-        trait      : rollDice(this.trait)
+        id: id,
+        tier: rollDice(this.tier),
+        tierResult: rollDice(this.tierResult),
+        name: rollDice(this.name),
+        nameMod: rollDice(this.name),
+        quirkA: rollDice(this.quirk),
+        quirkB: rollDice(this.quirk),
+        trait: rollDice(this.trait),
       };
-    }
+    },
   };
 
   //dice roll function
@@ -29,30 +29,35 @@ async function generatePlanet(id) {
   //create name modification
   function suffix(num) {
     //mod options
-    let retStr = '';
+    let retStr = "";
     if (num > 50) {
       let rolls = {
-        numA        : rollDice(10),
-        numB        : rollDice(10),
-        letter      : rollDice(26),
-        letterPlace : rollDice(3)
+        numA: rollDice(10) - 1,
+        numB: rollDice(10) - 1,
+        letter: rollDice(26),
+        letterPlace: rollDice(3),
       };
 
       //arrange suffix characters
       if (rolls.letterPlace == 3) {
-        retStr = `${rolls.numA}` + `${rolls.numB}` + `${rolls.letter}`;
+        retStr =
+          `${rolls.numA}` +
+          `${rolls.numB}` +
+          `${planetTable().nameModC[rolls.letter]}`;
+      } else if (rolls.letterPlace == 2) {
+        retStr =
+          `${rolls.numA}` +
+          `${planetTable().nameModC[rolls.letter]}` +
+          `${rolls.numB}`;
+      } else {
+        retStr =
+          `${planetTable().nameModC[rolls.letter]}` +
+          `${rolls.numA}` +
+          `${rolls.numB}`;
       }
-      else if (rolls.letterPlace == 2) {
-        retStr = `${rolls.numA}` + `${rolls.letter}` + `${rolls.numB}`;
-      }
-      else {
-        retStr = `${rolls.letter}` + `${rolls.numA}` + `${rolls.numB}`;
-      }
-    }
-    else if (num > 20) {
+    } else if (num > 20) {
       retStr = planetTable().nameModB[rollDice(10)];
-    }
-    else {
+    } else {
       retStr = planetTable().nameModA;
     }
 
@@ -61,7 +66,10 @@ async function generatePlanet(id) {
   //create object containing planet roll results data
   function makePlanet(obj, id) {
     const planetObj = {};
-    const name = obj.tier == 6 ? planetTable().name[obj.name] + `-X` : planetTable().name[obj.name];
+    const name =
+      obj.tier == 6
+        ? planetTable().name[obj.name] + `-X`
+        : planetTable().name[obj.name];
     const tierInfo =
       obj.tier == 6
         ? planetTable().tier[obj.tier].results[obj.tierResult] +
@@ -84,7 +92,7 @@ async function generatePlanet(id) {
   }
   //build journal entry contents, create journal entry
   async function planetJournal(obj) {
-    let name = obj.name + ' ' + obj.suffix;
+    let name = obj.name + " " + obj.suffix;
     let content = `
           <h1>${name} - Tier ${obj.tier}</h1>
           <div>
@@ -98,14 +106,14 @@ async function generatePlanet(id) {
           <h2>Natuarl Quirk:</h2>
           <p>${obj.natQuirk}</p>
           <br/>
-          <h2>Planet Trait:</h2>
+          <h2>Star Trait:</h2>
           <p>${obj.planetTrait}</p>
           </div>
           `;
     await JournalEntry.create({
-      content : content,
-      folder  : obj.folder,
-      name    : `Planet ${name}`
+      content: content,
+      folder: obj.folder,
+      name: `Planet ${name}`,
     });
   }
 
