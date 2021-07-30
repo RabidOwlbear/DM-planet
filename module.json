@@ -1,21 +1,35 @@
 {
-    "name": "DM-planet",
-    "title": "Dark matter planet journal creator",
-    "description": "Dark matter planet journal creator",
-    "author": "grim",
-    "version": "0.0.0.09",
-    "minimumCoreVersion": "0.8.6",
-    "compatibleCoreVersion": "0.8.6",
-    "scripts": ["/scripts/DM-planet-journal.js", "/scripts/DM-planet-tables.js"],
-    "packs": [{
-        "name": "macro",
-        "label": "DM Planet Gen Macro",
-        "path": "./packs/macro.db",
-        "entity": "Macro",
-        "module": "DM-planet"
-    }],
-    "url": "https://github.com/RabidOwlbear/DM-planet",
-    "manifest": "https://github.com/RabidOwlbear/DM-planet/raw/master/module.json",
-    "download": "https://github.com/RabidOwlbear/DM-planet/archive/refs/heads/master.zip"
-
+  "name": "DM-planet",
+  "title": "Dark matter planet journal creator",
+  "description": "Dark matter planet journal creator",
+  "author": "grim",
+  "authors": [],
+  "url": "https://github.com/RabidOwlbear/DM-planet",
+  "flags": {},
+  "version": "0.0.0.1",
+  "minimumCoreVersion": "0.8.6",
+  "compatibleCoreVersion": "0.8.6",
+  "scripts": [
+    "/scripts/DM-planet-generator.js"
+  ],
+  "esmodules": [],
+  "styles": [],
+  "languages": [],
+  "packs": [
+    {
+      "name": "macro",
+      "label": "DM Planet Gen Macro",
+      "path": "./packs/macro.db",
+      "entity": "Macro",
+      "module": "DM-planet",
+      "private": false
+    }
+  ],
+  "system": [],
+  "dependencies": [],
+  "socket": false,
+  "manifest": "https://github.com/RabidOwlbear/DM-planet/raw/master/module.json",
+  "download": "https://github.com/RabidOwlbear/DM-planet/archive/refs/heads/master.zip",
+  "protected": false,
+  "coreTranslation": false
 }

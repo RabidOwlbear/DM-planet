@@ -16,9 +16,9 @@ async function generatePlanet(id) {
         nameMod: rollDice(this.name),
         quirkA: rollDice(this.quirk),
         quirkB: rollDice(this.quirk),
-        trait: rollDice(this.trait),
+        trait: rollDice(this.trait)
       };
-    },
+    }
   };
 
   //dice roll function
@@ -35,7 +35,7 @@ async function generatePlanet(id) {
         numA: rollDice(10) - 1,
         numB: rollDice(10) - 1,
         letter: rollDice(26),
-        letterPlace: rollDice(3),
+        letterPlace: rollDice(3)
       };
 
       //arrange suffix characters
@@ -113,9 +113,13 @@ async function generatePlanet(id) {
     await JournalEntry.create({
       content: content,
       folder: obj.folder,
-      name: `Planet ${name}`,
+      name: `Planet ${name}`
     });
   }
 
   planetJournal(makePlanet(rollPool.tableRolls, id));
 }
+// initialize
+Hooks.once("init", () => {
+  DMPGen.initialize();
+});
