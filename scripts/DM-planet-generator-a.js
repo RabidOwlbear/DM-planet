@@ -457,14 +457,16 @@ class DMPGen {
           </div>
           <div>
           <br/>
-          <h2>Civilization Quirk:</h2>
-          <p>${journalObj.civQuirk}</p>
-          <br/>
-          <h2>Natural Quirk:</h2>
-          <p>${journalObj.natQuirk}</p>
-          <br/>
-          <h2>Star Trait:</h2>
-          <p>${journalObj.starTrait}</p>
+          <section class="secret">
+            <h2>Civilization Quirk:</h2>
+            <p>${journalObj.civQuirk}</p>
+            <br/>
+            <h2>Natural Quirk:</h2>
+            <p>${journalObj.natQuirk}</p>
+            <br/>
+            <h2>Star Trait:</h2>
+            <p>${journalObj.starTrait}</p>
+          </section>
           </div>
           `;
     await JournalEntry.create({
