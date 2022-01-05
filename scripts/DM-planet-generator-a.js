@@ -1,3 +1,13 @@
+Hooks.once('init', async function () {
+  game.settings.register('DM-planet', 'planetFolderName', {
+    name: 'Planet Journal Folder Name',
+    hint: 'Name Of Folder To Use For Storing Created Planet Journal Entries',
+    scope: 'world',
+    type: String,
+    default: 'Planet Journals',
+    config: true
+  });
+});
 class DMPGen {
   static RollPool = {
     tier: 6,
@@ -312,13 +322,14 @@ class DMPGen {
     12: 'This star is a newborn, only recently exploded into existence among a cloud of interstellar gas, which it now hungrily and steadily devours'
   };
   static async initialize() {
-    let folder = game.folders?.contents?.find((f) => f.name == DMPGen.Folder);
+    let folderName = game.settings.get('DM-planet', 'planetFolderName');
+    let folder = game.folders?.contents?.find((f) => f.name == folderName);
     if (!folder) {
       await Folder.create({
-        name: DMPGen.Folder,
+        name: folderName,
         type: 'JournalEntry'
       });
-      folder = game.folders.contents.find((f) => f.name == DMPGen.Folder);
+      folder = game.folders.contents.find((f) => f.name == folderName);
     }
     this.folderId = folder.id;
   }
