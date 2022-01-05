@@ -438,7 +438,6 @@ class DMPGen {
     const rotation = rotCheck ? `transform: rotate(${rotCheck}deg)` : ``;
     let name = journalObj.name + ' ' + journalObj.suffix;
     const imgLinks = DMPGen.planetImage();
-    let content = ``;
     let content =
       `
           
