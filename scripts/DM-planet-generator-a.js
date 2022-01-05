@@ -434,8 +434,11 @@ class DMPGen {
     starTrait: ${journalObj.starTrait}
     ---------------------------------
     `);
+    const rotCheck = DMPGen.roll(10) > 5 ? Math.random() * 180 + 1 : false;
+    const rotation = rotCheck ? `transform: rotate(${rotCheck}deg)` : ``;
     let name = journalObj.name + ' ' + journalObj.suffix;
     const imgLinks = DMPGen.planetImage();
+    let content = ``;
     let content =
       `
           
@@ -450,8 +453,8 @@ class DMPGen {
       `);">
                 <div class="planet" style="background: url(` +
       imgLinks.planet +
-      `) 0 / auto 100%;"></div>
-                <div class="planet-highlight"></div>
+      `) 0 / auto 100%; ${rotation}"></div>
+                <div class="planet-highlight"style="${rotation}"></div>
               </div>
             </div>  
           </div>

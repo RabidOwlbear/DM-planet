@@ -41,10 +41,28 @@
     background-position: 200% 0;
   }
 }
+
 .half-block {
   width: 50%;
 }
 .two-column {
   display: flex;
   justify-content: space-between;
+}
+
+.rotate10 {
+  transform: rotate(10deg);
+}
+.rotate25 {
+  transform: rotate(25deg);
+}
+.rotate45 {
+  transform: rotate(45deg);
+}
+.rotate135 {
+  transform: rotate(135deg);
+}
+
+.rotate180 {
+  transform: rotate(180deg);
 }
